@@ -11,3 +11,7 @@ acme.validation.airport.code-duplicated.message= Duplicated Code
 
 validation.pattern	= The input must follow the pattern:
 
+error.code= The input must follow the pattern
+
+phone-error= The input must follow the pattern
+
