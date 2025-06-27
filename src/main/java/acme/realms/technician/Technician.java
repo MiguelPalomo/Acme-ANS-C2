@@ -1,6 +1,7 @@
 
 package acme.realms.technician;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Index;
 import javax.persistence.Table;
@@ -30,12 +31,12 @@ public class Technician extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	@Automapped
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{error.code}")
+	@Column(unique = true)
 	private String				licenseNumber;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{phone-error}")
 	@Automapped
 	private String				phoneNumber;
 
