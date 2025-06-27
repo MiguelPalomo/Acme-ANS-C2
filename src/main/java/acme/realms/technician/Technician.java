@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 @ValidTechnician
 @Table(indexes = {
-	@Index(columnList = "license_number")
+	@Index(columnList = "licenseNumber")
 })
 public class Technician extends AbstractRole {
 	// Serialisation identifier -----------------------------------------------
