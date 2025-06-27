@@ -34,7 +34,7 @@ import lombok.Setter;
 @Setter
 @ValidBooking
 @Table(indexes = {
-	@Index(columnList = "locatorCode"), @Index(columnList = "draftMode"), @Index(columnList = "draftMode, customer_id")
+	@Index(columnList = "draftMode"), @Index(columnList = "draftMode, customer_id")
 })
 public class Booking extends AbstractEntity {
 
@@ -45,7 +45,7 @@ public class Booking extends AbstractEntity {
 	// Attributes ----------------------------------------------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{acme.validation.booking.locatorCode.pattern}")
 	@Column(unique = true)
 	private String				locatorCode;
 
@@ -60,7 +60,7 @@ public class Booking extends AbstractEntity {
 	private TravelClass			travelClass;
 
 	@Optional
-	@ValidString(pattern = "^[0-9]{4}$")
+	@ValidString(pattern = "^[0-9]{4}$", message = "{acme.validation.booking.lastCardNibble.pattern}")
 	@Automapped
 	private String				lastNibble;
 

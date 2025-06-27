@@ -21,6 +21,7 @@ customer.booking.list.label.purchase-moment = Purchase moment
 customer.booking.list.label.travel-class = Travel class
 customer.booking.list.label.price = Price
 
+ 	
 customer.booking.list.button.create = Create
 customer.booking.form.button.passengers = Passengers
 acme.validation.booking.duplicated-booking.message = Duplicated Locator Code
