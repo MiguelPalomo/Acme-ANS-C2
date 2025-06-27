@@ -32,7 +32,13 @@ public class TechnicianMaintenanceRecordTaskCreateService extends AbstractGuiSer
 		masterId = super.getRequest().getData("masterId", int.class);
 		maintenanceRecord = this.repository.findOneMaintenanceRecordById(masterId);
 		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
-
+		if (super.getRequest().hasData("id")) {
+			Integer taskId = super.getRequest().getData("task", Integer.class);
+			if (taskId == null || taskId != 0) {
+				Task task = this.repository.findOneTaskById(taskId);
+				status = task != null && this.repository.findOneMaintenanceRecordTaskByMaintenanceRecordAndTaskId(masterId, taskId) == null;
+			}
+		}
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -101,6 +107,7 @@ public class TechnicianMaintenanceRecordTaskCreateService extends AbstractGuiSer
 		dataset = super.unbindObject(object, "version");
 
 		dataset.put("tasks", choicesTask);
+		dataset.put("task", choicesTask.getSelected().getKey());
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		super.getResponse().addData(dataset);
 	}
