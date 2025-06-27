@@ -46,7 +46,7 @@ public class Passenger extends AbstractEntity {
 	private String				email;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	@ValidString(pattern = "^[A-Z0-9]{6,9}$", message = "{acme.validation.passenger.passportNumber.pattern}")
 	@Automapped
 	private String				passportNumber;
 
