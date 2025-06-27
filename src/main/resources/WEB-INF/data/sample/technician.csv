@@ -1,3 +1,4 @@
 key,key:userAccount,license-number,phone-number,specialisation,annual-health-test,years-of-experience,certifications
 technician-01,user-account-technician-01,AAA123456,+34000000000,Lorem ipsum dolor sit amet consectetur adipiscing,true,2,
 technician-02,user-account-technician-02,BBB123456,+34000000001,Lorem ipsum dolor sit amet consectetur adipiscina,true,3,
+technician-03,user-account-technician-03,CCC123456,+34000000002,Lorem ipsum dolor sit amet consectetur adipiscina,true,3,
