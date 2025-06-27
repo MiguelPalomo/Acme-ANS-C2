@@ -1,0 +1,23 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+authenticated.customer.form.title = Detalles de cliente
+
+authenticated.customer.form.label.identifier = Identificador
+authenticated.customer.form.label.phoneNumber = Número de teléfono
+authenticated.customer.form.label.physicalAddress = Dirección postal
+authenticated.customer.form.label.city = Ciudad
+authenticated.customer.form.label.country = País
+authenticated.customer.form.label.earnedPoints = Puntos Ganados
+
+authenticated.customer.form.button.create = Registrar
+authenticated.customer.form.button.update = Actualizar
+acme.validation.customer.identifier.syntax.message = Las dos o tres primeras letras deben coincidir con tus iniciales
+acme.validation.customer.identifier.unique.message = Este identificador esta en uso

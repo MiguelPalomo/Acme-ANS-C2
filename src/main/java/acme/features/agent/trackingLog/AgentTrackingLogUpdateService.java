@@ -1,0 +1,122 @@
+
+package acme.features.agent.trackingLog;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
+import acme.client.services.AbstractGuiService;
+import acme.client.services.GuiService;
+import acme.entities.claim.TrackingLog;
+import acme.entities.claim.TrackingLogStatus;
+import acme.realms.Agent;
+
+@GuiService
+public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, TrackingLog> {
+
+	@Autowired
+	private AgentTrackingLogRepository repository;
+
+
+	@Override
+	public void authorise() {
+		boolean status;
+		int trackingLogId;
+		TrackingLog trackingLog;
+
+		trackingLogId = super.getRequest().getData("id", int.class);
+		trackingLog = this.repository.findTrackingLogById(trackingLogId);
+		status = trackingLog != null && trackingLog.isDraftMode() & super.getRequest().getPrincipal().hasRealm(trackingLog.getClaim().getAgent());
+
+		if (status && super.getRequest().hasData("lastUpdateMoment")) {
+			Date moment = super.getRequest().getData("lastUpdateMoment", Date.class);
+
+			if (moment == null || trackingLog.getLastUpdateMoment() == null)
+				status = false;
+			else {
+				boolean unchanged = trackingLog.getLastUpdateMoment().getTime() == moment.getTime();
+				status = status && unchanged;
+			}
+		}
+
+		super.getResponse().setAuthorised(status);
+	}
+
+	@Override
+	public void load() {
+		TrackingLog object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrackingLogById(id);
+
+		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final TrackingLog object) {
+		assert object != null;
+		super.bindObject(object, "step", "resolutionPercentage", "status", "resolution");
+	}
+
+	@Override
+	public void validate(final TrackingLog object) {
+		assert object != null;
+
+		if (object.getClaim() != null) {
+			Collection<TrackingLog> trackingLogs = this.repository.findTrackingLogsByClaimId(object.getClaim().getId());
+			List<TrackingLog> completedLogs = this.repository.findCompletedTrackingLogsByClaimId(object.getClaim().getId()).stream().sorted(Comparator.comparing(TrackingLog::getCreationMoment)).toList();
+
+			Optional<TrackingLog> recentTrackingLogOpt = trackingLogs.stream().filter(t -> t.getId() != object.getId()).sorted(Comparator.comparing(TrackingLog::getCreationMoment).reversed()).findFirst();
+
+			if (object.getResolutionPercentage() != null && recentTrackingLogOpt.isPresent()) {
+				TrackingLog recentTrackingLog = recentTrackingLogOpt.get();
+				Double previous = recentTrackingLog.getResolutionPercentage();
+				Double current = object.getResolutionPercentage();
+
+				boolean previousIsNull = previous == null;
+				boolean bothCompleted = previous != null && previous == 100.0 && current == 100.0;
+				boolean validIncrement = previousIsNull || previous < current;
+
+				if (bothCompleted)
+					super.state(completedLogs.size() <= 2, "resolutionPercentage", "agent.trackingLog.form.error.maxcompleted");
+				else if (recentTrackingLog.getCreationMoment().before(object.getCreationMoment()))
+					super.state(validIncrement, "resolutionPercentage", "agent.trackingLog.form.error.badPercentage");
+			}
+
+			if (completedLogs.size() == 2 && object.getResolutionPercentage() != null && object.getResolutionPercentage() == 100.0) {
+				TrackingLog first = completedLogs.get(0);
+				TrackingLog second = completedLogs.get(1);
+
+				boolean sameStatus = first.getStatus().equals(second.getStatus());
+				super.state(sameStatus, "status", "agent.trackingLog.form.error.mismatchedStatus");
+			}
+		}
+	}
+
+	@Override
+	public void perform(final TrackingLog object) {
+		assert object != null;
+		this.repository.save(object);
+	}
+
+	@Override
+	public void unbind(final TrackingLog object) {
+		assert object != null;
+		Dataset dataset;
+		SelectChoices choicesStatus;
+
+		choicesStatus = SelectChoices.from(TrackingLogStatus.class, object.getStatus());
+
+		dataset = super.unbindObject(object, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode");
+		dataset.put("status", choicesStatus);
+
+		super.getResponse().addData(dataset);
+	}
+}
