@@ -33,9 +33,6 @@ public interface CustomerBookingPassengerRepository extends AbstractRepository {
 	@Query("select bp.passenger.id from BookingPassenger bp where bp.booking.id = :bookingId")
 	Collection<Integer> findPassengerIdsInBooking(int bookingId);
 
-	//	@Query("select p from Passenger p where p.draftMode = false and p.customer.id = :customerId and p.dateOfBirth<:purchaseMoment")
-	//	Collection<Passenger> findValidPassengers(int customerId, Date purchaseMoment);
-
 	@Query("select p from Passenger p where p.draftMode = false and p.customer.id = :customerId")
 	Collection<Passenger> findValidPassengers(int customerId);
 
