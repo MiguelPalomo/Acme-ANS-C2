@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.AircraftStatus;
+import acme.entities.airline.Airline;
 import acme.entities.airline.AirlineRepository;
 
 @GuiService
@@ -28,7 +29,17 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = true;
+		if (super.getRequest().hasData("id")) {
+			Integer airlineId = super.getRequest().getData("airline", Integer.class);
+			if (airlineId == null || airlineId != 0) {
+				Airline airline = this.repository.findAirlineById(airlineId);
+				status = airline != null;
+			}
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
