@@ -37,6 +37,7 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 		Aircraft aircraft = this.repository.findAircraftById(id);
 
 		aircraft.setStatus(AircraftStatus.UNDER_MAINTENANCE);
+
 		super.getBuffer().addData(aircraft);
 	}
 
@@ -59,6 +60,8 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 
 	@Override
 	public void perform(final Aircraft aircraft) {
+
+		aircraft.setStatus(AircraftStatus.UNDER_MAINTENANCE);
 		this.repository.save(aircraft);
 	}
 
