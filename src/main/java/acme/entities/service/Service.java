@@ -58,7 +58,7 @@ public class Service extends AbstractEntity {
 	private Money				discountedMoney;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 48)
+	@ValidNumber(min = 0, max = 100, integer = 3)
 	@Automapped
 	private Double				averageDwellTime;
 
