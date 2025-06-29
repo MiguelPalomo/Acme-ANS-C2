@@ -37,7 +37,7 @@ public class Technician extends AbstractRole {
 	private String				licenseNumber;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.technician.phoneNumber}")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.phoneNumber}")
 	@Automapped
 	private String				phoneNumber;
 
