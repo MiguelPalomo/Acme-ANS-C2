@@ -6,6 +6,9 @@ acme.validation.Agent.code = El número de empleado debe comenzar por las inicia
 
 acme.validation.airport.code-duplicated.message= Código Duplicado
 
+
+acme.validation.registrationNumber= Código Duplicado
+
 validation.pattern	= La entrada debe seguir el patrón:
 
 

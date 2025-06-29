@@ -9,6 +9,8 @@ acme.validation.Agent.code = The employee number must begin with the user's init
 
 acme.validation.airport.code-duplicated.message= Duplicated Code
 
+acme.validation.registrationNumber= Duplicated Code
+
 validation.pattern	= The input must follow the pattern:
 
 acme.validation.technician.licenseNumber= Must be composed of two to three upper-case letters and six numbers
