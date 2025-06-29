@@ -39,7 +39,7 @@ public class Airline extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}$")
+	@ValidString(pattern = "^[A-Z]{3}$", message = "{acme.validation.iataCode}")
 	@Column(unique = true)
 	private String				iataCode;
 
@@ -64,7 +64,7 @@ public class Airline extends AbstractEntity {
 	private String				emailAdress;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.phoneNumber}")
 	@Automapped
 	private String				phoneNumber;
 
