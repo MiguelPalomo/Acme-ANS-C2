@@ -78,13 +78,9 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 		SelectChoices choicesAircraft;
 
 		Collection<Aircraft> aircrafts;
-		if (object.isDraftMode()) {
 
-			AircraftStatus status = AircraftStatus.UNDER_MAINTENANCE;
-			aircrafts = this.repository.findManyAircraftsUnderMaintenance(status);
-
-		} else
-			aircrafts = this.repository.findManyAircrafts();
+		AircraftStatus status = AircraftStatus.UNDER_MAINTENANCE;
+		aircrafts = this.repository.findManyAircraftsUnderMaintenance(status);
 
 		choicesAircraft = SelectChoices.from(aircrafts, "registrationNumber", object.getAircraft());
 
