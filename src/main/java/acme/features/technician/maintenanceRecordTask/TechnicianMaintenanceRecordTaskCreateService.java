@@ -36,7 +36,7 @@ public class TechnicianMaintenanceRecordTaskCreateService extends AbstractGuiSer
 			Integer taskId = super.getRequest().getData("task", Integer.class);
 			if (taskId == null || taskId != 0) {
 				Task task = this.repository.findOneTaskById(taskId);
-				status = task != null && this.repository.findOneMaintenanceRecordTaskByMaintenanceRecordAndTaskId(masterId, taskId) == null;
+				status = task != null && this.repository.findOneMaintenanceRecordTaskByMaintenanceRecordAndTaskId(masterId, taskId) == null && !task.isDraftMode();
 			}
 		}
 		super.getResponse().setAuthorised(status);
@@ -98,7 +98,7 @@ public class TechnicianMaintenanceRecordTaskCreateService extends AbstractGuiSer
 		Collection<Task> tasks;
 		int masterId;
 		Collection<Task> tasks_asociated;
-		tasks = this.repository.findManyTasksByTechnicianId(super.getRequest().getPrincipal().getActiveRealm().getId());
+		tasks = this.repository.findManyValidTasks();
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		tasks_asociated = this.repository.findTasksFromMaintenanceRecordId(masterId);
