@@ -20,7 +20,7 @@
 
 <jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|delete') && draftMode == true}">
-			<acme:input-select code="technician.maintenance-record-task.form.label.task" path="task"  choices="${tasks}" readonly="true"/>
+			<acme:input-select code="technician.maintenance-record-task.form.label.task" path="task"  choices="${tasks}" />
 			
 			<acme:submit code="technician.maintenance-record.form.button.delete" action="/technician/maintenance-record-task/delete"/>
 			</jstl:when>
