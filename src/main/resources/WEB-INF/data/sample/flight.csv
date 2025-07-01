@@ -53,4 +53,4 @@ flight-39,Flight4,TRUE,EUR 50000.00,"Lorem ipsum dolor sit amet, consectetur adi
 flight-40,Flight5,TRUE,EUR 50000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FALSE,manager1
 flight-41,Flight6,TRUE,EUR 50000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FALSE,manager1
 flight-42,Flight7,TRUE,EUR 50000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FALSE,manager1
-flight-43,Flight8,TRUE,EUR 50000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FALSE,manager1
+flight-43,Flight8,FALSE,EUR 50000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",FALSE,manager1
