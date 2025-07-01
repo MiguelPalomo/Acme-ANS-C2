@@ -9,7 +9,6 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.airline.Airline;
-import acme.entities.airline.AirlineRepository;
 import acme.entities.airline.Type;
 
 @GuiService
@@ -17,7 +16,7 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AirlineRepository repository;
+	private AdministratorAirlineRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -30,7 +29,6 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 	@Override
 	public void load() {
 		Airline airline;
-
 		airline = new Airline();
 
 		super.getBuffer().addData(airline);
@@ -50,6 +48,8 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 
 	@Override
 	public void perform(final Airline airline) {
+		assert airline != null;
+
 		this.repository.save(airline);
 	}
 

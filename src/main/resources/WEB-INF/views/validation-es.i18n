@@ -6,9 +6,17 @@ acme.validation.Agent.code = El número de empleado debe comenzar por las inicia
 
 acme.validation.airport.code-duplicated.message= Código Duplicado
 
+
+acme.validation.registrationNumber= Código Duplicado
+
 validation.pattern	= La entrada debe seguir el patrón:
+
+
+acme.validation.technician.licenseNumber= Debe ser compuesto por dos o tres letras mayúsculas seguidas de seis números.
+acme.validation.phoneNumber= El número de teléfono tiene que estar compuesto de seis a quince dígitos seguido o no de un "+"
 
 acme.validation.realm.identifierPattern.message	= El identificador debe incluir 2-3 letras mayúsculas y 6 dígitos
 acme.validation.booking.locatorCode.pattern = Deben ser de seis a ocho letras mayúsculas y números
 acme.validation.booking.lastCardNibble.pattern = Deben ser cuatro dígitos
 acme.validation.passenger.passportNumber.pattern = De seis a nueve letras mayúsculas y números
+acme.validation.iataCode= El código debe incluir tres letras mayúsculas

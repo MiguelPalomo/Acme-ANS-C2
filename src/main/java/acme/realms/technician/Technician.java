@@ -3,8 +3,6 @@ package acme.realms.technician;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -20,9 +18,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidTechnician
-@Table(indexes = {
-	@Index(columnList = "licenseNumber")
-})
 public class Technician extends AbstractRole {
 	// Serialisation identifier -----------------------------------------------
 
@@ -31,12 +26,12 @@ public class Technician extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{error.code}")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{acme.validation.technician.licenseNumber} ")
 	@Column(unique = true)
 	private String				licenseNumber;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{phone-error}")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.phoneNumber}")
 	@Automapped
 	private String				phoneNumber;
 
@@ -51,7 +46,7 @@ public class Technician extends AbstractRole {
 	private boolean				annualHealthTest;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 120)
+	@ValidNumber(min = 0, max = 120, integer = 3)
 	@Automapped
 	private Double				yearsOfExperience;
 

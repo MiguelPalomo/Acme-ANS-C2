@@ -10,6 +10,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.AircraftStatus;
+import acme.entities.airline.Airline;
 import acme.entities.airline.AirlineRepository;
 
 @GuiService
@@ -28,7 +29,17 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		status = true;
+		if (super.getRequest().hasData("id")) {
+			Integer airlineId = super.getRequest().getData("airline", Integer.class);
+			if (airlineId == null || airlineId != 0) {
+				Airline airline = this.repository.findAirlineById(airlineId);
+				status = airline != null;
+			}
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -37,6 +48,7 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 		Aircraft aircraft = this.repository.findAircraftById(id);
 
 		aircraft.setStatus(AircraftStatus.UNDER_MAINTENANCE);
+
 		super.getBuffer().addData(aircraft);
 	}
 
@@ -59,6 +71,8 @@ public class AdministratorAircraftDisableService extends AbstractGuiService<Admi
 
 	@Override
 	public void perform(final Aircraft aircraft) {
+
+		aircraft.setStatus(AircraftStatus.UNDER_MAINTENANCE);
 		this.repository.save(aircraft);
 	}
 
