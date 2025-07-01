@@ -38,12 +38,12 @@ public class Customer extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{acme.validation.realm.identifierPattern.message}")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{acme.validation.realm.customer.IdentifierPattern}")
 	@Column(unique = true)
 	private String				identifier;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{acme.validation.phoneNumber}")
 	@Automapped
 	private String				phoneNumber;
 

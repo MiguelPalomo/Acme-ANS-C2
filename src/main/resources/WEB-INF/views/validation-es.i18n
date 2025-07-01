@@ -20,3 +20,4 @@ acme.validation.booking.locatorCode.pattern = Deben ser de seis a ocho letras ma
 acme.validation.booking.lastCardNibble.pattern = Deben ser cuatro dígitos
 acme.validation.passenger.passportNumber.pattern = De seis a nueve letras mayúsculas y números
 acme.validation.iataCode= El código debe incluir tres letras mayúsculas
+acme.validation.realm.customer.IdentifierPattern = El identificador debe incluir entre 2 y 3 letras mayúsculas seguidas de 6 dígitos
