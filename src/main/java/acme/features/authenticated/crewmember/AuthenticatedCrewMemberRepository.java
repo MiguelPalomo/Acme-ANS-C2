@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.components.principals.UserAccount;
 import acme.client.repositories.AbstractRepository;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @Repository
 public interface AuthenticatedCrewMemberRepository extends AbstractRepository {

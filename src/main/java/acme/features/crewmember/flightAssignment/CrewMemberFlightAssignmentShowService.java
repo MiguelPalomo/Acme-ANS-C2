@@ -15,8 +15,8 @@ import acme.entities.flight.Status;
 import acme.entities.flightassignment.CurrentStatus;
 import acme.entities.flightassignment.Duty;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.AvailabilityStatus;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.AvailabilityStatus;
+import acme.realms.crewMember.CrewMember;
 
 @GuiService
 public class CrewMemberFlightAssignmentShowService extends AbstractGuiService<CrewMember, FlightAssignment> {

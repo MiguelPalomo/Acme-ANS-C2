@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @Repository
 public interface CrewMemberDashboardRepository extends AbstractRepository {

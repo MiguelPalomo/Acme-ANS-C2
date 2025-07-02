@@ -16,7 +16,7 @@ import acme.entities.flightassignment.CurrentStatus;
 import acme.entities.flightassignment.Duty;
 import acme.entities.flightassignment.FlightAssignment;
 import acme.features.crewmember.activityLog.CrewMemberActivityLogRepository;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @GuiService
 public class CrewMemberFlightAssignmentDeleteService extends AbstractGuiService<CrewMember, FlightAssignment> {

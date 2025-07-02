@@ -13,8 +13,8 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.airline.Airline;
 import acme.entities.airline.AirlineRepository;
-import acme.realms.AvailabilityStatus;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.AvailabilityStatus;
+import acme.realms.crewMember.CrewMember;
 
 @GuiService
 public class AuthenticatedCrewMemberUpdateService extends AbstractGuiService<Authenticated, CrewMember> {
@@ -65,6 +65,14 @@ public class AuthenticatedCrewMemberUpdateService extends AbstractGuiService<Aut
 	@Override
 	public void perform(final CrewMember object) {
 		assert object != null;
+
+		String codigo = object.getEmployeeCode();
+		if (codigo != null && codigo.length() >= 2) {
+			int letras = Math.min(3, codigo.length());
+			String inicialesMayus = codigo.substring(0, letras).toUpperCase();
+			String resto = codigo.substring(letras);
+			object.setEmployeeCode(inicialesMayus + resto);
+		}
 
 		this.repository.save(object);
 	}

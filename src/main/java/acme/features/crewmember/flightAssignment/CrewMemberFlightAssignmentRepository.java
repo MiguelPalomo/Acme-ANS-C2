@@ -11,7 +11,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.flight.Leg;
 import acme.entities.flightassignment.Duty;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @Repository
 public interface CrewMemberFlightAssignmentRepository extends AbstractRepository {

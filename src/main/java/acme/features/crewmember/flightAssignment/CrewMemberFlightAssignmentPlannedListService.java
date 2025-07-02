@@ -11,9 +11,9 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.AvailabilityStatus;
-import acme.realms.CrewMember;
-import acme.realms.CrewMemberRepository;
+import acme.realms.crewMember.AvailabilityStatus;
+import acme.realms.crewMember.CrewMember;
+import acme.realms.crewMember.CrewMemberRepository;
 
 @GuiService
 public class CrewMemberFlightAssignmentPlannedListService extends AbstractGuiService<CrewMember, FlightAssignment> {

@@ -16,6 +16,8 @@ validation.pattern	= The input must follow the pattern:
 acme.validation.technician.licenseNumber= Must be composed of two to three upper-case letters and six numbers
 
 acme.validation.phoneNumber= The phone number must be composed of 6 to 15 digits preceded or not by "+"
+acme.validation.validSalary= The salary must be between 0.00 and 1000000.00
+acme.validation.years-Of-Experience = Years of experience must be between 0 and 120
 
 acme.validation.booking.locatorCode.pattern = Must be composed of six to eight upper-case letters and numbers
 acme.validation.booking.lastCardNibble.pattern = Must be composed of four digits

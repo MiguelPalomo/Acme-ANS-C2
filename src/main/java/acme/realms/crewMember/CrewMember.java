@@ -1,5 +1,5 @@
 
-package acme.realms;
+package acme.realms.crewMember;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,11 +13,11 @@ import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
-import acme.constraints.ValidCrewMemberCode;
+import acme.constraints.ValidCrewMember;
 import acme.constraints.ValidLongText;
+import acme.constraints.ValidPhoneNumber;
+import acme.constraints.ValidSalary;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidCrewMemberCode
+@ValidCrewMember
 @Table(indexes = {
 	@Index(columnList = "availabilityStatus"), @Index(columnList = "airline_id"), @Index(columnList = "employeeCode", unique = true)
 })
@@ -38,12 +38,11 @@ public class CrewMember extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(min = 6, max = 16, pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	@Automapped
 	private String				phoneNumber;
 
@@ -58,12 +57,12 @@ public class CrewMember extends AbstractRole {
 	private AvailabilityStatus	availabilityStatus;
 
 	@Mandatory
-	@ValidMoney(min = 0.00, max = 1000000.00)
+	@ValidSalary
 	@Automapped
 	private Money				salary;
 
 	@Optional
-	@ValidNumber(min = 0, max = 120)
+	@ValidNumber(min = 0, max = 120, message = "{acme.validation.years-Of-Experience}")
 	@Automapped
 	private int					yearsOfExperience;
 

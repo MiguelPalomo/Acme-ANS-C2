@@ -1,6 +1,9 @@
 # messages-es.i18n
 
 validation.agent.employeeNumber = El número de empleado debe seguir el patrón ^[A-Z]{2,3}\d{6}$
+validation.CrewMember.codePattern = El código de empleado debe empezar con las iniciales del nombre y apellido del empleado
+validation.CrewMember.codeNotUnique = El código de empleado debe ser único
+validation.activityLog.beforeLeg = El momento de registro debe ser igual o después de la fecha de llegada del tramo asociado
 
 acme.validation.Agent.code = El número de empleado debe comenzar por las iniciales del usuario
 
@@ -14,6 +17,8 @@ validation.pattern	= La entrada debe seguir el patrón:
 
 acme.validation.technician.licenseNumber= Debe ser compuesto por dos o tres letras mayúsculas seguidas de seis números.
 acme.validation.phoneNumber= El número de teléfono tiene que estar compuesto de seis a quince dígitos seguido o no de un "+"
+acme.validation.validSalary= El salario debe estar comprendido entre 0.00 y 1000000.00
+acme.validation.years-Of-Experience = Los años de experiencia deben estar entre 0 y 120
 
 acme.validation.realm.identifierPattern.message	= El identificador debe incluir 2-3 letras mayúsculas y 6 dígitos
 acme.validation.booking.locatorCode.pattern = Deben ser de seis a ocho letras mayúsculas y números

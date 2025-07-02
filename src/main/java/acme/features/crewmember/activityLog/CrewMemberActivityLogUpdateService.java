@@ -8,7 +8,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.ActivityLog;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @GuiService
 public class CrewMemberActivityLogUpdateService extends AbstractGuiService<CrewMember, ActivityLog> {

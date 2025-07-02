@@ -11,9 +11,8 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CrewMemberCodeValidator.class)
-
-public @interface ValidCrewMemberCode {
+@Constraint(validatedBy = CrewMemberValidator.class)
+public @interface ValidCrewMember {
 
 	String message() default "";
 	Class<?>[] groups() default {};
