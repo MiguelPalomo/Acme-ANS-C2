@@ -67,7 +67,7 @@ public class Booking extends AbstractEntity {
 	@Mandatory
 	//@Valid
 	@Automapped
-	private boolean				draftMode			= true;
+	private boolean				draftMode;
 
 	// Relationships -------------------------------------------------------------------------------------------------
 
