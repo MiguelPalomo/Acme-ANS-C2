@@ -27,7 +27,7 @@ import lombok.Setter;
 @Setter
 @ValidCrewMember
 @Table(indexes = {
-	@Index(columnList = "availabilityStatus"), @Index(columnList = "airline_id"), @Index(columnList = "employeeCode", unique = true)
+	@Index(columnList = "availabilityStatus")
 })
 public class CrewMember extends AbstractRole {
 
