@@ -41,7 +41,7 @@ public class CrewMemberActivityLogUpdateService extends AbstractGuiService<CrewM
 	public void load() {
 		int activityLogId = super.getRequest().getData("id", int.class);
 		ActivityLog activityLog = this.repository.findActivityLogById(activityLogId);
-
+		// Not updating date because it is a registration moment not an updating moment
 		super.getBuffer().addData(activityLog);
 	}
 
