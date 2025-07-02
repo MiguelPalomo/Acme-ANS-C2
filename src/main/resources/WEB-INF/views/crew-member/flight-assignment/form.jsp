@@ -46,14 +46,23 @@
 	
 	
 	<jstl:choose>
-		<jstl:when test="${_command == 'show' && draftMode == false}">
+		<jstl:when test="${_command == 'show' && canShowActivityLogs}">
 			<acme:button code="crew-member.flight-assignment.form.button.activity-log" action="/crew-member/activity-log/list?assignmentId=${id}"/>					
 		</jstl:when> 
+	</jstl:choose>
+	
+	<jstl:if test="${_command == 'show' && !canShowActivityLogs}">
+		<hr/>
+		<div>
+			<small><em><acme:print code="crew-member.flight-assignment.form.message.publishToCreateLog"/></em></small>
+		</div>
+	</jstl:if>
+	
+	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish')  && draftMode == true}">
 			<acme:submit code="crew-member.flight-assignment.form.button.update" action="/crew-member/flight-assignment/update"/>
 			<acme:submit code="crew-member.flight-assignment.form.button.delete" action="/crew-member/flight-assignment/delete"/>
 			<acme:submit code="crew-member.flight-assignment.form.button.publish" action="/crew-member/flight-assignment/publish"/>
-			<acme:button code="crew-member.flight-assignment.form.button.activity-log" action="/crew-member/activity-log/list?assignmentId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="crew-member.flight-assignment.form.button.create" action="/crew-member/flight-assignment/create"/>

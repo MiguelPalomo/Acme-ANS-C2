@@ -29,6 +29,8 @@ crew-member.flight-assignment.form.label.aircraft = Avión
 crew-member.flight-assignment.form.label.flight = Vuelo:
 crew-member.flight-assignment.form.title.leg = Notas del tramo:
 
+crew-member.flight-assignment.form.message.publishToCreateLog = Recuerda: Para crear una incidencia la asignación debe estar publicada y su tramo debe haber ocurrido
+
 # List Labels
 crew-member.flight-assignment.list.label.leg=Número de vuelo:
 crew-member.flight-assignment.list.label.duty=Función:

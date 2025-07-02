@@ -26,10 +26,10 @@ crew-member.activity-log.list.label.registrationMoment = Momento de Registro:
 crew-member.activity-log.list.label.draftMode = Modo Borrador:
 
 # Form Buttons
-crew-member.activity-log.form.button.create = Crear
-crew-member.activity-log.form.button.update = Actualizar
-crew-member.activity-log.form.button.delete = Eliminar
-crew-member.activity-log.form.button.publish = Publicar
+crew-member.activity-log.form.button.create = Crear incidente
+crew-member.activity-log.form.button.update = Actualizar incidente
+crew-member.activity-log.form.button.delete = Eliminar incidente
+crew-member.activity-log.form.button.publish = Publicar incidente
 
 # List Buttons
 crew-member.activity-log.list.button.create = Crear

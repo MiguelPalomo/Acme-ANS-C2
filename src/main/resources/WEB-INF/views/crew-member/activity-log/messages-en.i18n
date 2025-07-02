@@ -27,10 +27,10 @@ crew-member.activity-log.list.label.registrationMoment = Registration Moment:
 crew-member.activity-log.list.label.draftMode = Draft mode:
 
 # Form Buttons
-crew-member.activity-log.form.button.create = Create
-crew-member.activity-log.form.button.update = Update
-crew-member.activity-log.form.button.delete = Delete
-crew-member.activity-log.form.button.publish = Publish Activity Log
+crew-member.activity-log.form.button.create = Create activity log
+crew-member.activity-log.form.button.update = Update activity log
+crew-member.activity-log.form.button.delete = Delete activity log
+crew-member.activity-log.form.button.publish = Publish activity Log
 
 # List Buttons
 crew-member.activity-log.list.button.create = Create Activity Log

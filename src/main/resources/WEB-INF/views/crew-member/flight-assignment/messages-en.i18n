@@ -29,6 +29,8 @@ crew-member.flight-assignment.form.label.aircraft = Aircraft
 crew-member.flight-assignment.form.label.flight = Flight
 crew-member.flight-assignment.form.title.leg = Leg Details
 
+crew-member.flight-assignment.form.message.publishToCreateLog = Remember: To create an activity log the flight assignment must be published and its leg finished
+
 # List Labels
 crew-member.flight-assignment.list.label.leg=Flight Leg Number:
 crew-member.flight-assignment.list.label.duty=Duty:

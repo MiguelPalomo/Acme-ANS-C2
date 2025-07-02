@@ -25,7 +25,7 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<jstl:if test="${showAction}">
+<jstl:if test="${showAction && draftModeFlightAssignment == false}">
   <acme:button
     code="crew-member.activity-log.list.button.create"
     action="/crew-member/activity-log/create?assignmentId=${assignmentId}"/>
