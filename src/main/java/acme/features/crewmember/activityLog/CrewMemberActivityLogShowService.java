@@ -9,7 +9,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.ActivityLog;
 import acme.features.crewmember.flightAssignment.CrewMemberFlightAssignmentRepository;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @GuiService
 public class CrewMemberActivityLogShowService extends AbstractGuiService<CrewMember, ActivityLog> {

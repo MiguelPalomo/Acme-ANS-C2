@@ -20,7 +20,7 @@ import acme.client.services.GuiService;
 import acme.datatypes.CrewMemberStatistics;
 import acme.entities.flightassignment.CurrentStatus;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.CrewMember;
+import acme.realms.crewMember.CrewMember;
 
 @GuiService
 public class CrewMemberDashboardShowService extends AbstractGuiService<CrewMember, CrewMemberDashboard> {
