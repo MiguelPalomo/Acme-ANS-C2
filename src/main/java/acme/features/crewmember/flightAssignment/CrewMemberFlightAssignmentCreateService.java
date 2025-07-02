@@ -16,7 +16,6 @@ import acme.entities.flight.Leg;
 import acme.entities.flightassignment.CurrentStatus;
 import acme.entities.flightassignment.Duty;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.crewMember.AvailabilityStatus;
 import acme.realms.crewMember.CrewMember;
 import acme.realms.crewMember.CrewMemberRepository;
 
@@ -36,7 +35,7 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		CrewMember crewMember = this.crewMemberRepository.findCrewMemberById(userId);
 
-		if (crewMember == null || crewMember.getAvailabilityStatus() != AvailabilityStatus.AVAILABLE) {
+		if (crewMember == null) {
 			super.getResponse().setAuthorised(false);
 			return;
 		}

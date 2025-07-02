@@ -13,11 +13,11 @@ import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.constraints.ValidCrewMember;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidPhoneNumber;
-import acme.constraints.ValidSalary;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -57,7 +57,7 @@ public class CrewMember extends AbstractRole {
 	private AvailabilityStatus	availabilityStatus;
 
 	@Mandatory
-	@ValidSalary
+	@ValidMoney
 	@Automapped
 	private Money				salary;
 
