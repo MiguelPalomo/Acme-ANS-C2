@@ -58,7 +58,7 @@ public class CrewMemberActivityLogPublishService extends AbstractGuiService<Crew
 		super.state(isAssignmentPublished, "*", "acme.validation.activityLog.flightAssignment-not-published");
 
 		boolean hasLegStarted = fa.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
-		super.state(hasLegStarted, "*", "acme.validation.activityLog.leg.not-started");
+		super.state(hasLegStarted, "*", "acme.validation.activityLog.leg.not-finished");
 	}
 
 	@Override

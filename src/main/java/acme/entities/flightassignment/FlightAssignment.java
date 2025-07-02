@@ -17,6 +17,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidFlightAssignment;
 import acme.entities.flight.Leg;
 import acme.realms.crewMember.CrewMember;
 import lombok.Getter;
@@ -28,6 +29,7 @@ import lombok.Setter;
 @Table(indexes = {
 	@Index(columnList = "moment"), @Index(columnList = "draftMode, leg_id"), @Index(columnList = "leg_id, duty") // para countByLegAndDuty y hasDutyAssignedExcludingSelf
 })
+@ValidFlightAssignment
 public class FlightAssignment extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
