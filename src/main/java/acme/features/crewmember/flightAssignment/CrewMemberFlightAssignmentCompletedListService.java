@@ -11,18 +11,13 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.FlightAssignment;
-import acme.realms.crewMember.AvailabilityStatus;
 import acme.realms.crewMember.CrewMember;
-import acme.realms.crewMember.CrewMemberRepository;
 
 @GuiService
 public class CrewMemberFlightAssignmentCompletedListService extends AbstractGuiService<CrewMember, FlightAssignment> {
 
 	@Autowired
-	private CrewMemberFlightAssignmentRepository	repository;
-
-	@Autowired
-	private CrewMemberRepository					crewMemberRepository;
+	private CrewMemberFlightAssignmentRepository repository;
 
 
 	@Override
@@ -48,15 +43,6 @@ public class CrewMemberFlightAssignmentCompletedListService extends AbstractGuiS
 
 		super.addPayload(dataset, object, "duty", "moment", "currentStatus", "remarks", "draftMode", "leg");
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void unbind(final Collection<FlightAssignment> objects) {
-		int userId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		CrewMember crewMember = this.crewMemberRepository.findCrewMemberById(userId);
-		boolean canCreate = crewMember != null && crewMember.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
-
-		super.getResponse().addGlobal("showCreate", canCreate);
 	}
 
 }
