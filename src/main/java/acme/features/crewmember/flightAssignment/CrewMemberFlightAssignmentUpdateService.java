@@ -84,7 +84,10 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
+		FlightAssignment lastFlightAssignment = this.repository.findFlightAssignmentById(flightAssignment.getId());
+
 		Dataset dataset;
+		dataset = super.unbindObject(flightAssignment, "duty", "currentStatus", "moment", "remarks", "draftMode", "leg");
 		CrewMember crewMember = (CrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
 		Collection<Leg> legs = this.repository.findAllLegsByAirlineId(crewMember.getAirline().getId());
@@ -115,8 +118,6 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 		SelectChoices statusChoices = SelectChoices.from(CurrentStatus.class, flightAssignment.getCurrentStatus());
 		SelectChoices duties = SelectChoices.from(Duty.class, flightAssignment.getDuty());
 
-		dataset = super.unbindObject(flightAssignment, "duty", "currentStatus", "moment", "remarks", "draftMode", "leg");
-
 		dataset.put("crewMember", crewMember.getIdentity().getFullName());
 		dataset.put("statusChoices", statusChoices);
 		dataset.put("currentStatus", statusChoices.getSelected().getKey());
@@ -124,6 +125,19 @@ public class CrewMemberFlightAssignmentUpdateService extends AbstractGuiService<
 		dataset.put("duty", duties.getSelected().getKey());
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
+
+		if (lastFlightAssignment.getLeg() != null) {
+			Leg leg = lastFlightAssignment.getLeg();
+			dataset.put("leg.id", leg.getId());
+			dataset.put("leg.flightNumber", leg.getFlightNumber());
+			dataset.put("leg.status", leg.getStatus());
+			dataset.put("leg.scheduledDeparture", leg.getScheduledDeparture());
+			dataset.put("leg.scheduledArrival", leg.getScheduledArrival());
+			dataset.put("leg.departureAirport", leg.getDepartureAirport().getName());
+			dataset.put("leg.arrivalAirport", leg.getArrivalAirport().getName());
+			dataset.put("leg.aircraft", leg.getAircraft().getRegistrationNumber());
+			dataset.put("leg.flight", leg.getFlight().getTag());
+		}
 
 		super.getResponse().addData(dataset);
 	}
