@@ -55,10 +55,10 @@ public class TechnicianMaintenanceRecordTaskShowService extends AbstractGuiServi
 		MaintenanceRecordTask maintenanceRecordTask;
 		MaintenanceRecord maintenanceRecord;
 
-		maintenanceRecordTaskId = super.getRequest().getData("id", int.class);
+		maintenanceRecordTaskId = super.getRequest().getData("id", Integer.class);
 		maintenanceRecordTask = this.repository.findOneMaintenanceRecordTaskById(maintenanceRecordTaskId);
 		maintenanceRecord = maintenanceRecordTask.getMaintenanceRecord();
-		tasks = this.repository.findManyTasksByTechnicianId(super.getRequest().getPrincipal().getActiveRealm().getId());
+		tasks = this.repository.findValidTasksToUnlink(maintenanceRecord);
 		choicesTask = SelectChoices.from(tasks, "description", object.getTask());
 		dataset = super.unbindObject(object, "version");
 

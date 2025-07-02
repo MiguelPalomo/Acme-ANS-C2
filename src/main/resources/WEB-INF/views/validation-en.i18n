@@ -22,3 +22,4 @@ acme.validation.booking.lastCardNibble.pattern = Must be composed of four digits
 acme.validation.passenger.passportNumber.pattern = Must be composed of six to nine upper-case letters and digits
 acme.validation.realm.identifierPattern.message = The identifier must include 2-3 upper case letters and 6 digits
 acme.validation.iataCode= The code must include three upercase letters
+acme.validation.realm.customer.IdentifierPattern = The identifier must include 2 to 3 upper-case letters followed by 6 digits

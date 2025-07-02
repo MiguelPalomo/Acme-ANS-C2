@@ -48,11 +48,6 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 	@Override
 	public void validate(final Task object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("priority"))
-			super.state(object.getPriority() >= 0 && object.getPriority() < 11, "priority", "technician.task.form.error.priority-range");
-		if (!super.getBuffer().getErrors().hasErrors("estimatedDuration"))
-			super.state(object.getEstimatedDuration() >= 0 && object.getEstimatedDuration() < 1001, "estimatedDuration", "technician.task.form.error.estimatedDuration-range");
 	}
 
 	@Override
