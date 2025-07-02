@@ -10,7 +10,7 @@
 
 acme.validation.flightAssignment.duty = Cada tramo solo puede tener un piloto y un copiloto
 acme.validation.flightAssignment.leg.moment = La asignación no puede vincularse a tramos que ya hayan ocurrido
-acme.validation.flightAssignment.crewMember.available = El tripulante no está disponible para ser asignado
+acme.validation.flightAssignment.crewMember.available = El tripulante está de vacaciones o en proceso de abandonar y no puede ser asignado
 acme.validation.flightAssignment.crewMember.multipleLegs = El tripulante ya está asignado a otro tramo en el mismo momento
 acme.validation.flightAssignment.crewMember.onlyOnePilot = El tramo solo puede tener 1 piloto
 acme.validation.flightAssignment.crewMember.onlyOneCoPilot = El tramo solo puede tener 1 co-piloto

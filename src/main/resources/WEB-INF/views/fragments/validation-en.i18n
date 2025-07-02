@@ -10,7 +10,7 @@
 
 acme.validation.flightAssignment.duty = Each leg can only have one pilot and one co-pilot
 acme.validation.flightAssignment.leg.moment = The assignment cannot be linked to legs that have already occurred
-acme.validation.flightAssignment.crewMember.available = The flight crew member is not available to be assigned
+acme.validation.flightAssignment.crewMember.available = The flight crew member is on vacation or on leave and is not available to be assigned
 acme.validation.flightAssignment.crewMember.multipleLegs = The flight crew member is already assigned to another leg at the same time
 acme.validation.flightAssignment.crewMember.onlyOnePilot = The leg can only have one pilot
 acme.validation.flightAssignment.crewMember.onlyOneCoPilot = The leg can only have one co-pilot
