@@ -28,7 +28,9 @@ public class CrewMemberActivityLogListService extends AbstractGuiService<CrewMem
 	public void authorise() {
 		int assignmentId = super.getRequest().getData("assignmentId", int.class);
 		FlightAssignment flightAssignment = this.flightAssignmentRepository.findFlightAssignmentById(assignmentId);
-		boolean status = flightAssignment != null && super.getRequest().getPrincipal().hasRealm(flightAssignment.getCrewMember());
+
+		boolean status = flightAssignment != null && !flightAssignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(flightAssignment.getCrewMember())
+			&& flightAssignment.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment());
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -39,10 +41,13 @@ public class CrewMemberActivityLogListService extends AbstractGuiService<CrewMem
 		super.getBuffer().addData(activityLogs);
 
 		FlightAssignment fa = this.flightAssignmentRepository.findFlightAssignmentById(assignmentId);
-		boolean show = fa.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment());
+		if (fa.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment()))
+			super.getResponse().addGlobal("showAction", true);
+
+		boolean draftModeFlightAssignment = fa.getDraftMode();
+		super.getResponse().addGlobal("draftModeFlightAssignment", draftModeFlightAssignment);
 
 		super.getResponse().addGlobal("assignmentId", assignmentId);
-		super.getResponse().addGlobal("showAction", show);
 	}
 
 	@Override

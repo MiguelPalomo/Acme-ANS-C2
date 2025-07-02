@@ -47,7 +47,7 @@ public class CrewMemberActivityLogCreateService extends AbstractGuiService<CrewM
 				if (assignment != null) {
 					boolean userOwnsAssignment = assignment.getCrewMember().getId() == userId;
 					boolean assignmentIsPublished = !assignment.getDraftMode();
-					boolean legStarted = assignment.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
+					boolean legStarted = assignment.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment());
 
 					status = userOwnsAssignment && assignmentIsPublished && legStarted;
 				}
@@ -81,6 +81,9 @@ public class CrewMemberActivityLogCreateService extends AbstractGuiService<CrewM
 
 		if (object.getFlightAssignment().getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment()))
 			super.getResponse().addGlobal("showAction", true);
+
+		boolean draftModeFlightAssignment = object.getFlightAssignment().getDraftMode();
+		super.getResponse().addGlobal("draftModeFlightAssignment", draftModeFlightAssignment);
 
 		dataset.put("assignmentId", super.getRequest().getData("assignmentId", int.class));
 		super.getResponse().addData(dataset);

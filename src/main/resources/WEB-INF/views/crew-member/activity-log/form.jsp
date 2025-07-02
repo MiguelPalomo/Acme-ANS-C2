@@ -28,7 +28,7 @@
 	<acme:input-textbox code="crew-member.activity-log.form.label.severityLevel" path="severityLevel" readonly="draftMode"/>
 	
 	<jstl:choose>
-		<jstl:when test="${_command == 'create' && showAction}">
+		<jstl:when test="${_command == 'create' && showAction && draftModeFlightAssignment == false}">
 			<acme:submit code="crew-member.activity-log.form.button.create" action="/crew-member/activity-log/create?assignmentId=${assignmentId}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update') && showAction && draftMode == true}">

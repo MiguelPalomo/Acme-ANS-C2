@@ -118,6 +118,9 @@ public class CrewMemberFlightAssignmentShowService extends AbstractGuiService<Cr
 		dataset.put("legStatuses", legStatuses);
 		dataset.put("legs", legChoices);
 
+		boolean showActivityLogs = !flightAssignment.getDraftMode() && flightAssignment.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment());
+		super.getResponse().addGlobal("canShowActivityLogs", showActivityLogs);
+
 		super.getResponse().addData(dataset);
 	}
 
