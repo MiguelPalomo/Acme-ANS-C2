@@ -21,6 +21,26 @@
 	<acme:input-textbox code="crew-member.flight-assignment.form.label.crewMember" path="crewMember" readonly="true"/>
 	<acme:input-select code="crew-member.flight-assignment.form.label.duty" path="duty" choices="${duties}" readonly="draftMode"/>
 	<acme:input-select code="crew-member.flight-assignment.form.label.leg" path="leg" choices= "${legs}" readonly="draftMode"/>
+		
+		<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete')}">
+		<hr/>
+		<h2>
+			<acme:print code="crew-member.flight-assignment.form.title.leg"/>
+		</h2>
+		<acme:input-textbox code="crew-member.flight-assignment.form.label.flightNumber" path="leg.flightNumber" readonly="true"/>
+		<acme:input-textbox code="crew-member.flight-assignment.form.label.status" path="leg.status" readonly="true"/>
+		<acme:input-moment code="crew-member.flight-assignment.form.label.scheduledDeparture" path="leg.scheduledDeparture" readonly="true"/>
+		<acme:input-moment code="crew-member.flight-assignment.form.label.scheduledArrival" path="leg.scheduledArrival" readonly="true"/>
+		<acme:input-textbox code="crew-member.flight-assignment.form.label.departureAirport" path="leg.departureAirport" readonly="true"/>
+		<acme:input-textbox code="crew-member.flight-assignment.form.label.arrivalAirport" path="leg.arrivalAirport" readonly="true"/>
+		<acme:input-textbox code="crew-member.flight-assignment.form.label.aircraft" path="leg.aircraft" readonly="true"/>
+		<acme:input-textbox code="crew-member.flight-assignment.form.label.flight" path="leg.flight" readonly="true"/>
+	
+	</jstl:when>
+	</jstl:choose>
+	
+	<hr/>
 	<acme:input-select code="crew-member.flight-assignment.form.label.status" path="currentStatus" choices= "${statusChoices}" readonly="draftMode"/>
 	<acme:input-textarea code="crew-member.flight-assignment.form.label.remarks" path="remarks" readonly="draftMode"/>
 	

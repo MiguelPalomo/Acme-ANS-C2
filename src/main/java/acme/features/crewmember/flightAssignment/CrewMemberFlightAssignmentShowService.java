@@ -106,8 +106,6 @@ public class CrewMemberFlightAssignmentShowService extends AbstractGuiService<Cr
 			dataset.put("leg.flight", leg.getFlight().getTag());
 		}
 
-		dataset = super.unbindObject(flightAssignment, "duty", "currentStatus", "moment", "remarks", "draftMode", "leg");
-
 		dataset.put("leg", flightAssignment.getLeg() != null ? Integer.toString(flightAssignment.getLeg().getId()) : "0");
 		dataset.put("crewMember", crewMember.getIdentity().getFullName());
 		dataset.put("statusChoices", statusChoices);

@@ -72,7 +72,7 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 	public void validate(final FlightAssignment object) {
 
 		if (object.getLeg() != null) {
-			boolean isLinkedToPastLeg = object.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
+			boolean isLinkedToPastLeg = object.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment());
 			super.state(!isLinkedToPastLeg, "leg", "acme.validation.flightAssignment.leg.moment");
 
 			Date start = object.getLeg().getScheduledDeparture();
@@ -152,6 +152,19 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 		dataset.put("duty", duties.getSelected().getKey());
 		dataset.put("legs", legChoices);
 		dataset.put("leg", legChoices.getSelected().getKey());
+
+		if (flightAssignment.getLeg() != null) {
+			Leg leg = flightAssignment.getLeg();
+			dataset.put("leg.id", leg.getId());
+			dataset.put("leg.flightNumber", leg.getFlightNumber());
+			dataset.put("leg.status", leg.getStatus());
+			dataset.put("leg.scheduledDeparture", leg.getScheduledDeparture());
+			dataset.put("leg.scheduledArrival", leg.getScheduledArrival());
+			dataset.put("leg.departureAirport", leg.getDepartureAirport().getName());
+			dataset.put("leg.arrivalAirport", leg.getArrivalAirport().getName());
+			dataset.put("leg.aircraft", leg.getAircraft().getRegistrationNumber());
+			dataset.put("leg.flight", leg.getFlight().getTag());
+		}
 
 		super.getResponse().addData(dataset);
 	}

@@ -19,6 +19,16 @@ crew-member.flight-assignment.form.label.remarks=Notas (opcional):
 crew-member.flight-assignment.form.label.leg=Código de tramo:
 crew-member.flight-assignment.form.label.crewMember=Tripulante:
 
+crew-member.flight-assignment.form.label.flightNumber = Número de vuelo:
+crew-member.flight-assignment.form.label.status = Estado del tramo:
+crew-member.flight-assignment.form.label.scheduledDeparture = Fecha de salida:
+crew-member.flight-assignment.form.label.scheduledArrival = Fecha de llegada:
+crew-member.flight-assignment.form.label.departureAirport = Aeropuerto de salida:
+crew-member.flight-assignment.form.label.arrivalAirport = Aeropuerto de llegada:
+crew-member.flight-assignment.form.label.aircraft = Avión
+crew-member.flight-assignment.form.label.flight = Vuelo:
+crew-member.flight-assignment.form.title.leg = Notas del tramo:
+
 # List Labels
 crew-member.flight-assignment.list.label.leg=Número de vuelo:
 crew-member.flight-assignment.list.label.duty=Función:
@@ -32,5 +42,7 @@ crew-member.flight-assignment.form.button.update=Actualizar asignación
 crew-member.flight-assignment.form.button.create=Crear asignación
 crew-member.flight-assignment.form.button.delete=Eliminar asignación
 crew-member.flight-assignment.form.button.publish=Publicar asignación
-crew-members.flight-assignment.list.button.create=Crear
 crew-member.flight-assignment.form.button.activity-log=Mostrar registros de actividad
+
+# List Buttons
+crew-member.flight-assignment.list.button.create= Crear asignación

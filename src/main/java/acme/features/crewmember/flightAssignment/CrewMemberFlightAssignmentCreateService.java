@@ -97,7 +97,7 @@ public class CrewMemberFlightAssignmentCreateService extends AbstractGuiService<
 
 		if (assignment.getLeg() != null) {
 
-			boolean isLinkedToPastLeg = assignment.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
+			boolean isLinkedToPastLeg = assignment.getLeg().getScheduledArrival().before(MomentHelper.getCurrentMoment());
 			super.state(!isLinkedToPastLeg, "leg", "acme.validation.flightAssignment.leg.moment");
 
 			Date start = assignment.getLeg().getScheduledDeparture();
