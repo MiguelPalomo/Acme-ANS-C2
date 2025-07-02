@@ -27,13 +27,13 @@ flightAssignment-19,PILOT,2010/09/01 10:00,CONFIRMED,<marquee>Hacked</marquee>,m
 flightAssignment-20,PILOT,2010/09/01 10:00,CONFIRMED,<script>alert('Hacked!');</script>,member-01,leg-37,true
 flightAssignment-21,PILOT,2010/09/01 10:00,CONFIRMED,' or 'A' = 'A,member-01,leg-37,true
 # flight-crew-member - standard variations
-flightAssignment-22,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-02,leg-37,true
-flightAssignment-23,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-03,leg-37,true
+flightAssignment-22,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-07,leg-37,true
+flightAssignment-23,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-01,leg-37,true
 flightAssignment-24,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-03,leg-37,true
 # leg - standard variations
 flightAssignment-25,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-01,leg-37,true
 flightAssignment-26,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-06,leg-29,false
 flightAssignment-27,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-07,leg-30,false
-flightAssignment-28,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-08,leg-31,false
+flightAssignment-28,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-01,leg-31,false
 # draft-mode - standard variations
 flightAssignment-29,PILOT,2010/09/01 10:00,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscin",member-01,leg-37,false
