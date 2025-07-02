@@ -55,7 +55,6 @@ public class TechnicianDashboardShowService extends AbstractGuiService<Technicia
 				.collect(Collectors.toList());
 
 			Map<String, List<Double>> amountsByCurrency = recentmrs.stream().collect(Collectors.groupingBy(mr -> mr.getEstimatedCost().getCurrency(), Collectors.mapping(mr -> mr.getEstimatedCost().getAmount(), Collectors.toList())));
-			Map<String, Double> maintenanceRecordCountCost = new HashMap<>();
 			Map<String, Double> maintenanceRecordAverageCost = new HashMap<>();
 			Map<String, Double> maintenanceRecordMinimumCost = new HashMap<>();
 			Map<String, Double> maintenanceRecordMaximumCost = new HashMap<>();
