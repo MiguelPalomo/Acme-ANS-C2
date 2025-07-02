@@ -40,6 +40,7 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 		passenger.setDateOfBirth(MomentHelper.getCurrentMoment());
 		passenger.setSpecialNeeds(null);
 		passenger.setCustomer(customer);
+		passenger.setDraftMode(true);
 
 		super.getBuffer().addData(passenger);
 	}
