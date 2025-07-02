@@ -21,7 +21,7 @@ public interface CrewMemberFlightAssignmentRepository extends AbstractRepository
 	Collection<FlightAssignment> findCompletedFlightAssignments(int crewMemberId, Date currentMoment);
 
 	// Legs pendientes
-	@Query("select fa from FlightAssignment fa where fa.crewMember.id = :crewMemberId and fa.leg.scheduledDeparture > :currentMoment")
+	@Query("SELECT fa FROM FlightAssignment fa WHERE fa.crewMember.id = :crewMemberId AND fa.leg.scheduledDeparture >= :currentMoment")
 	Collection<FlightAssignment> findPendingFlightAssignments(int crewMemberId, Date currentMoment);
 
 	@Query("select fa from FlightAssignment fa")
