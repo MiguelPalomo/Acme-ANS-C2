@@ -18,7 +18,7 @@
 <acme:form>
 
 	<acme:input-textbox code="manager.flight.form.label.tag" path="tag"/>
-	<acme:input-textbox code="manager.flight.form.label.selfTransfer" path="selfTransfer"/>
+	<acme:input-checkbox code="manager.flight.form.label.selfTransfer" path="selfTransfer" readonly="${_command != 'create'}"/>
 	<acme:input-money code="manager.flight.form.label.cost" path="cost"/>
 	<acme:input-textarea code="manager.flight.form.label.description" path="description"/>
 	<jstl:if test="${_command == 'show'}">
