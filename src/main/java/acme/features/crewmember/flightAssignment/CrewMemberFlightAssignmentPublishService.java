@@ -45,7 +45,7 @@ public class CrewMemberFlightAssignmentPublishService extends AbstractGuiService
 				else if (legKey.matches("\\d+")) {
 					int legId = Integer.parseInt(legKey);
 					Leg leg = this.repository.findLegById(legId);
-					boolean legIsValid = this.repository.findAllLegs().contains(leg);
+					boolean legIsValid = leg != null && !leg.isDraftMode() && this.repository.findAllLegs().contains(leg);
 					status = userOwnsAssignment && legIsValid;
 				}
 			}
