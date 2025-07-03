@@ -9,6 +9,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.ActivityLog;
 import acme.entities.flightassignment.FlightAssignment;
+import acme.realms.crewMember.AvailabilityStatus;
 import acme.realms.crewMember.CrewMember;
 
 @GuiService
@@ -31,6 +32,7 @@ public class CrewMemberActivityLogPublishService extends AbstractGuiService<Crew
 
 		if (activityLog != null && activityLog.getDraftMode()) {
 			boolean userOwnsActivityLog = super.getRequest().getPrincipal().hasRealm(activityLog.getFlightAssignment().getCrewMember());
+
 			status = userOwnsActivityLog;
 		}
 
@@ -59,6 +61,10 @@ public class CrewMemberActivityLogPublishService extends AbstractGuiService<Crew
 
 		boolean hasLegStarted = fa.getLeg().getScheduledDeparture().before(MomentHelper.getCurrentMoment());
 		super.state(hasLegStarted, "*", "acme.validation.activityLog.leg.not-finished");
+
+		boolean isAvailable = fa.getCrewMember().getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
+		super.state(isAvailable, "*", "acme.validation.flightAssignment.crewMember.available");
+
 	}
 
 	@Override
