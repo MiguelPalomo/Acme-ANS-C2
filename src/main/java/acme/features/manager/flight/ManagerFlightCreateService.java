@@ -18,8 +18,14 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void authorise() {
-		Manager current = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-		boolean status = current != null;
+		String method = super.getRequest().getMethod();
+		boolean status = true;
+		if (method.equals("POST")) {
+			int id = super.getRequest().getData("id", int.class);
+			status = id == 0;
+
+		}
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -33,14 +39,12 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 		flight = new Flight();
 		flight.setDraftMode(true);
 		flight.setManager(manager);
-		flight.setSelfTransfer(true);
 
 		super.getBuffer().addData(flight);
 	}
 
 	@Override
 	public void bind(final Flight flight) {
-		assert flight != null;
 		super.bindObject(flight, "tag", "selfTransfer", "cost", "description");
 	}
 
@@ -52,14 +56,13 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void perform(final Flight flight) {
-		assert flight != null;
 		this.repository.save(flight);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
-		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
+		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description");
 
 		super.getResponse().addData(dataset);
 	}
